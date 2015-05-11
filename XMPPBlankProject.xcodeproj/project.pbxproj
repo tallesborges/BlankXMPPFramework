@@ -153,7 +153,6 @@
 		2F8A2AFD1B01149B00D43754 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A2A681B01149B00D43754 /* DDXMLDocument.m */; };
 		2F8A2AFE1B01149B00D43754 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A2A6A1B01149B00D43754 /* DDXMLElement.m */; };
 		2F8A2AFF1B01149B00D43754 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8A2A6C1B01149B00D43754 /* DDXMLNode.m */; };
-		2F8A2B001B01149B00D43754 /* build-libidn.sh in Resources */ = {isa = PBXBuildFile; fileRef = 2F8A2A701B01149B00D43754 /* build-libidn.sh */; };
 		2F8A2B011B01149B00D43754 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A2A721B01149B00D43754 /* libidn.a */; };
 		2F8A2B041B01156200D43754 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A2B031B01156200D43754 /* CoreData.framework */; };
 		2F8A2B061B01156900D43754 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A2B051B01156900D43754 /* CFNetwork.framework */; };
@@ -519,13 +518,7 @@
 		2F2EAA3B1B00F83E00CDE0CA = {
 			isa = PBXGroup;
 			children = (
-				2F8A2B0F1B0115B800D43754 /* SystemConfiguration.framework */,
-				2F8A2B0D1B0115AD00D43754 /* libxml2.dylib */,
-				2F8A2B0B1B01159F00D43754 /* libresolv.dylib */,
-				2F8A2B091B01159500D43754 /* CoreLocation.framework */,
-				2F8A2B071B01159000D43754 /* Security.framework */,
-				2F8A2B051B01156900D43754 /* CFNetwork.framework */,
-				2F8A2B031B01156200D43754 /* CoreData.framework */,
+				2F8A2B111B0116D600D43754 /* Libraries */,
 				2F8A29031B01149B00D43754 /* XMPP */,
 				2F2EAA461B00F83F00CDE0CA /* XMPPBlankProject */,
 				2F2EAA601B00F83F00CDE0CA /* XMPPBlankProjectTests */,
@@ -1459,6 +1452,20 @@
 			path = libidn;
 			sourceTree = "<group>";
 		};
+		2F8A2B111B0116D600D43754 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				2F8A2B0F1B0115B800D43754 /* SystemConfiguration.framework */,
+				2F8A2B0D1B0115AD00D43754 /* libxml2.dylib */,
+				2F8A2B0B1B01159F00D43754 /* libresolv.dylib */,
+				2F8A2B091B01159500D43754 /* CoreLocation.framework */,
+				2F8A2B071B01159000D43754 /* Security.framework */,
+				2F8A2B051B01156900D43754 /* CFNetwork.framework */,
+				2F8A2B031B01156200D43754 /* CoreData.framework */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1539,7 +1546,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F8A2B001B01149B00D43754 /* build-libidn.sh in Resources */,
 				2F2EAA531B00F83F00CDE0CA /* Main.storyboard in Resources */,
 				2F2EAA581B00F83F00CDE0CA /* LaunchScreen.xib in Resources */,
 				2F8A2AFB1B01149B00D43754 /* README.txt in Resources */,
