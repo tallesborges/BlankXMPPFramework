@@ -10,6 +10,7 @@
 // THE SOFTWARE.
 
 //#import <Parse/Parse.h>
+#import <CoreData/CoreData.h>
 #import "ProgressHUD.h"
 
 //#import "AppConstant.h"

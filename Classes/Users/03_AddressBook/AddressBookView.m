@@ -19,6 +19,7 @@
 //#import "AppConstant.h"
 
 #import "AddressBookView.h"
+#import "NBPhoneNumberUtil.h"
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 @interface AddressBookView()

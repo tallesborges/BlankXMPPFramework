@@ -80,23 +80,6 @@
 	//---------------------------------------------------------------------------------------------------------------------------------------------
 	[ProgressHUD show:@"Please wait..." Interaction:NO];
 
-//	PFUser *user = [PFUser user];
-//	user.username = email;
-//	user.password = password;
-//	user.email = email;
-//	user[PF_USER_EMAILCOPY] = email;
-//	user[PF_USER_FULLNAME] = name;
-//	user[PF_USER_FULLNAME_LOWER] = [name lowercaseString];
-//	[user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-//	{
-//		if (error == nil)
-//		{
-//			ParsePushUserAssign();
-//			[ProgressHUD showSuccess:@"Succeed."];
-//			[self dismissViewControllerAnimated:YES completion:nil];
-//		}
-//		else [ProgressHUD showError:error.userInfo[@"error"]];
-//	}];
 }
 
 #pragma mark - Table view data source

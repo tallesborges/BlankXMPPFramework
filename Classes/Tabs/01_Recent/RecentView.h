@@ -17,9 +17,7 @@
 #import "FacebookFriendsView.h"
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
-@interface RecentView : UITableViewController <UIActionSheetDelegate, SelectSingleDelegate, SelectMultipleDelegate, AddressBookDelegate, FacebookFriendsDelegate>
+@interface RecentView : UITableViewController <NSFetchedResultsControllerDelegate>
 //-------------------------------------------------------------------------------------------------------------------------------------------------
-
-- (void)loadRecents;
 
 @end

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21A4202B7F40E6F7D39D10B3 /* XMPPSample.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A422999908F1B1D51AB2D7 /* XMPPSample.m */; };
+		21A42A512F75E57199017467 /* MucChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A423AE864920EA798064AF /* MucChatView.m */; };
+		2F0DD9751B0FB9C100CD5108 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0DD9731B0FB9C100CD5108 /* Fabric.framework */; };
+		2F0DD9761B0FB9C200CD5108 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0DD9741B0FB9C100CD5108 /* Crashlytics.framework */; };
+		2F0DD97A1B0FCAF800CD5108 /* DigitsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0DD9771B0FCAF800CD5108 /* DigitsKit.framework */; };
+		2F0DD97B1B0FCAF800CD5108 /* DigitsKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2F0DD9781B0FCAF800CD5108 /* DigitsKitResources.bundle */; };
+		2F0DD97C1B0FCAF800CD5108 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F0DD9791B0FCAF800CD5108 /* TwitterCore.framework */; };
 		2F2EAA4A1B00F83F00CDE0CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2EAA491B00F83F00CDE0CA /* main.m */; };
 		2F2EAA4D1B00F83F00CDE0CA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2EAA4C1B00F83F00CDE0CA /* AppDelegate.m */; };
 		2F2EAA501B00F83F00CDE0CA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2EAA4F1B00F83F00CDE0CA /* ViewController.m */; };
@@ -284,6 +291,7 @@
 		2F8A2B0C1B01159F00D43754 /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A2B0B1B01159F00D43754 /* libresolv.dylib */; };
 		2F8A2B0E1B0115AD00D43754 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A2B0D1B0115AD00D43754 /* libxml2.dylib */; };
 		2F8A2B101B0115B800D43754 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F8A2B0F1B0115B800D43754 /* SystemConfiguration.framework */; };
+		3C0320996612A3CB5BC10AC2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A34BE6AF8A59F913415538B /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -297,6 +305,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07D97B232A0015819FEF4D17 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		21A422999908F1B1D51AB2D7 /* XMPPSample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMPPSample.m; sourceTree = "<group>"; };
+		21A423AE864920EA798064AF /* MucChatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MucChatView.m; sourceTree = "<group>"; };
+		21A425B59F6633C400ADA649 /* XMPPSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPSample.h; sourceTree = "<group>"; };
+		21A42F738090A42F9CF7FEB8 /* MucChatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MucChatView.h; sourceTree = "<group>"; };
+		2F0DD9731B0FB9C100CD5108 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		2F0DD9741B0FB9C100CD5108 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		2F0DD9771B0FCAF800CD5108 /* DigitsKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DigitsKit.framework; sourceTree = "<group>"; };
+		2F0DD9781B0FCAF800CD5108 /* DigitsKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DigitsKitResources.bundle; path = DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle; sourceTree = "<group>"; };
+		2F0DD9791B0FCAF800CD5108 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		2F2EAA441B00F83F00CDE0CA /* XMPPBlankProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMPPBlankProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F2EAA481B00F83F00CDE0CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F2EAA491B00F83F00CDE0CA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -832,6 +850,8 @@
 		2F8A2B0B1B01159F00D43754 /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
 		2F8A2B0D1B0115AD00D43754 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		2F8A2B0F1B0115B800D43754 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8A34BE6AF8A59F913415538B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9AE61D9FA15D8C2F0A791B9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -841,15 +861,20 @@
 			files = (
 				2F4EEDC01B024D9C00027BAE /* AddressBook.framework in Frameworks */,
 				2F4EEDBE1B024D6B00027BAE /* AVFoundation.framework in Frameworks */,
+				2F0DD9761B0FB9C200CD5108 /* Crashlytics.framework in Frameworks */,
 				2F4EEDBC1B024D6500027BAE /* MobileCoreServices.framework in Frameworks */,
 				2F8A2B0A1B01159500D43754 /* CoreLocation.framework in Frameworks */,
 				2F8A2B101B0115B800D43754 /* SystemConfiguration.framework in Frameworks */,
 				2F8A2B0E1B0115AD00D43754 /* libxml2.dylib in Frameworks */,
 				2F8A2B0C1B01159F00D43754 /* libresolv.dylib in Frameworks */,
 				2F8A2B081B01159000D43754 /* Security.framework in Frameworks */,
+				2F0DD97A1B0FCAF800CD5108 /* DigitsKit.framework in Frameworks */,
 				2F8A2B061B01156900D43754 /* CFNetwork.framework in Frameworks */,
 				2F8A2B041B01156200D43754 /* CoreData.framework in Frameworks */,
 				2F8A2B011B01149B00D43754 /* libidn.a in Frameworks */,
+				2F0DD97C1B0FCAF800CD5108 /* TwitterCore.framework in Frameworks */,
+				2F0DD9751B0FB9C100CD5108 /* Fabric.framework in Frameworks */,
+				3C0320996612A3CB5BC10AC2 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -866,9 +891,7 @@
 		2F2EAA3B1B00F83E00CDE0CA = {
 			isa = PBXGroup;
 			children = (
-				2F4EEDBF1B024D9C00027BAE /* AddressBook.framework */,
-				2F4EEDBD1B024D6B00027BAE /* AVFoundation.framework */,
-				2F4EEDBB1B024D6500027BAE /* MobileCoreServices.framework */,
+				2F4EEDC11B02653A00027BAE /* Frameworks */,
 				2F4EED1A1B02484800027BAE /* Resources */,
 				2F4EED2A1B02484800027BAE /* Classes */,
 				2F4EEC3A1B0247EB00027BAE /* Vendors */,
@@ -877,6 +900,7 @@
 				2F2EAA461B00F83F00CDE0CA /* XMPPBlankProject */,
 				2F2EAA601B00F83F00CDE0CA /* XMPPBlankProjectTests */,
 				2F2EAA451B00F83F00CDE0CA /* Products */,
+				B2D45969BE1AEE7DF13F9E43 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1298,6 +1322,8 @@
 				2F4EED2F1B02484800027BAE /* ChatView.h */,
 				2F4EED301B02484800027BAE /* ChatView.m */,
 				2F4EED311B02484800027BAE /* MediaItems */,
+				21A423AE864920EA798064AF /* MucChatView.m */,
+				21A42F738090A42F9CF7FEB8 /* MucChatView.h */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1464,6 +1490,8 @@
 			children = (
 				2F4EED6A1B02484900027BAE /* backend */,
 				2F4EED6F1B02484900027BAE /* general */,
+				21A422999908F1B1D51AB2D7 /* XMPPSample.m */,
+				21A425B59F6633C400ADA649 /* XMPPSample.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1512,6 +1540,22 @@
 				2F4EED851B02484900027BAE /* WelcomeView.xib */,
 			);
 			path = Welcome;
+			sourceTree = "<group>";
+		};
+		2F4EEDC11B02653A00027BAE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F0DD9771B0FCAF800CD5108 /* DigitsKit.framework */,
+				2F0DD9781B0FCAF800CD5108 /* DigitsKitResources.bundle */,
+				2F0DD9791B0FCAF800CD5108 /* TwitterCore.framework */,
+				2F0DD9731B0FB9C100CD5108 /* Fabric.framework */,
+				2F0DD9741B0FB9C100CD5108 /* Crashlytics.framework */,
+				2F4EEDBF1B024D9C00027BAE /* AddressBook.framework */,
+				2F4EEDBD1B024D6B00027BAE /* AVFoundation.framework */,
+				2F4EEDBB1B024D6500027BAE /* MobileCoreServices.framework */,
+				8A34BE6AF8A59F913415538B /* libPods.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		2F8A29031B01149B00D43754 /* XMPP */ = {
@@ -2404,6 +2448,15 @@
 			name = Libraries;
 			sourceTree = "<group>";
 		};
+		B2D45969BE1AEE7DF13F9E43 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				07D97B232A0015819FEF4D17 /* Pods.debug.xcconfig */,
+				E9AE61D9FA15D8C2F0A791B9 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2411,9 +2464,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F2EAA671B00F83F00CDE0CA /* Build configuration list for PBXNativeTarget "XMPPBlankProject" */;
 			buildPhases = (
+				F91AE68CBBF47F37FE61A180 /* Check Pods Manifest.lock */,
 				2F2EAA401B00F83F00CDE0CA /* Sources */,
 				2F2EAA411B00F83F00CDE0CA /* Frameworks */,
 				2F2EAA421B00F83F00CDE0CA /* Resources */,
+				2F0DD9721B0FB98800CD5108 /* ShellScript */,
+				554AD4676D5CFBF0385C9D28 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2498,6 +2554,7 @@
 				2F4EED861B02484900027BAE /* chat_blank@2x.png in Resources */,
 				2F4EEDA51B02484900027BAE /* SelectSingleView.xib in Resources */,
 				2F4EEDB71B02484900027BAE /* RegisterView.xib in Resources */,
+				2F0DD97B1B0FCAF800CD5108 /* DigitsKitResources.bundle in Resources */,
 				2F8A2AFB1B01149B00D43754 /* README.txt in Resources */,
 				2F4EED161B0247EC00027BAE /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				2F4EEDA71B02484900027BAE /* SelectMultipleView.xib in Resources */,
@@ -2532,6 +2589,52 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2F0DD9721B0FB98800CD5108 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run c130a821e1ec85b382a6b511f6cbc375d5b5b8f1 1ae3e02da295173125cdb9f8ce19bee2bd708bb140e19f042b4d3353718f31ac";
+		};
+		554AD4676D5CFBF0385C9D28 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F91AE68CBBF47F37FE61A180 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2F2EAA401B00F83F00CDE0CA /* Sources */ = {
@@ -2766,6 +2869,8 @@
 				2F8A2AFC1B01149B00D43754 /* NSString+DDXML.m in Sources */,
 				2F8A2A981B01149B00D43754 /* XMPPUserMemoryStorageObject.m in Sources */,
 				2F2EAA4A1B00F83F00CDE0CA /* main.m in Sources */,
+				21A4202B7F40E6F7D39D10B3 /* XMPPSample.m in Sources */,
+				21A42A512F75E57199017467 /* MucChatView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2848,7 +2953,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lxml2";
@@ -2891,7 +2996,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-lxml2";
 				SDKROOT = iphoneos;
@@ -2901,8 +3006,13 @@
 		};
 		2F2EAA681B00F83F00CDE0CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07D97B232A0015819FEF4D17 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = XMPPBlankProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -2910,13 +3020,19 @@
 					"$(PROJECT_DIR)/XMPP/Vendor/libidn",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Debug;
 		};
 		2F2EAA691B00F83F00CDE0CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9AE61D9FA15D8C2F0A791B9 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = XMPPBlankProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -2924,6 +3040,7 @@
 					"$(PROJECT_DIR)/XMPP/Vendor/libidn",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Release;
 		};

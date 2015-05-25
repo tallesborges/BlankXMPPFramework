@@ -10,13 +10,19 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
-
+#import "XMPPSample.h"
 #import "JSQMessages.h"
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
-@interface ChatView : JSQMessagesViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate>
+@interface ChatView : JSQMessagesViewController <NSFetchedResultsControllerDelegate>
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
-- (id)initWith:(NSString *)groupId_;
+- (id)initWith:(NSString *)userJID;
+
+- (instancetype)initWithUserJID:(XMPPJID *)userJID;
+
++ (instancetype)viewWithUserJID:(XMPPJID *)userJID;
+
+@property XMPPJID *userJID;
 
 @end

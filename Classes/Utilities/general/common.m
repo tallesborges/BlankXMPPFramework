@@ -13,6 +13,8 @@
 #import "WelcomeView.h"
 #import "PremiumView.h"
 #import "NavigationController.h"
+#import "AppDelegate.h"
+#import "XMPPSample.h"
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 void LoginUser(id target)
@@ -21,6 +23,14 @@ void LoginUser(id target)
 	NavigationController *navigationController = [[NavigationController alloc] initWithRootViewController:[[WelcomeView alloc] init]];
 	[target presentViewController:navigationController animated:YES completion:nil];
 }
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+bool UserLogged()
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+{
+    return [XMPPSample currentUser] != nil;
+}
+//-------------------------------------------------------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 void PresentPremium(id target)
@@ -35,3 +45,8 @@ void PostNotification(NSString *notification)
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:notification object:nil];
 }
+
+//- (iPhoneXMPPAppDelegate *)appDelegate
+//{
+//return (iPhoneXMPPAppDelegate *)[[UIApplication sharedApplication] delegate];
+//}

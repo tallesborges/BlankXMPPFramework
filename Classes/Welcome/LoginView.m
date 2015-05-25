@@ -16,50 +16,55 @@
 #import "push.h"
 
 #import "LoginView.h"
+#import "AppDelegate.h"
+#import "common.h"
+#import "XMPPSample.h"
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
-@interface LoginView()
+@interface LoginView ()
 
-@property (strong, nonatomic) IBOutlet UITableViewCell *cellEmail;
-@property (strong, nonatomic) IBOutlet UITableViewCell *cellPassword;
-@property (strong, nonatomic) IBOutlet UITableViewCell *cellButton;
+@property(strong, nonatomic) IBOutlet UITableViewCell *cellEmail;
+@property(strong, nonatomic) IBOutlet UITableViewCell *cellButton;
 
-@property (strong, nonatomic) IBOutlet UITextField *fieldEmail;
-@property (strong, nonatomic) IBOutlet UITextField *fieldPassword;
+@property(strong, nonatomic) IBOutlet UITextField *fieldEmail;
 
 @end
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
-@implementation LoginView
+@implementation LoginView {
+    bool _registred;
+}
 
-@synthesize cellEmail, cellPassword, cellButton;
-@synthesize fieldEmail, fieldPassword;
+//-------------------------------------------------------------------------------------------------------------------------------------------------
+- (AppDelegate *)appDelegate {
+    return (AppDelegate *) [[UIApplication sharedApplication] delegate];
+}
+//-------------------------------------------------------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 - (void)viewDidLoad
-//-------------------------------------------------------------------------------------------------------------------------------------------------
 {
-	[super viewDidLoad];
-	self.title = @"Login";
-	//---------------------------------------------------------------------------------------------------------------------------------------------
-	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-	[self.tableView addGestureRecognizer:gestureRecognizer];
-	gestureRecognizer.cancelsTouchesInView = NO;
+    [super viewDidLoad];
+    self.title = @"Login";
+    //---------------------------------------------------------------------------------------------------------------------------------------------
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.tableView addGestureRecognizer:gestureRecognizer];
+    gestureRecognizer.cancelsTouchesInView = NO;
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 - (void)viewDidAppear:(BOOL)animated
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 {
-	[super viewDidAppear:animated];
-	[fieldEmail becomeFirstResponder];
+    [super viewDidAppear:animated];
+    [_fieldEmail becomeFirstResponder];
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 - (void)dismissKeyboard
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 {
-	[self.view endEditing:YES];
+    [self.view endEditing:YES];
 }
 
 #pragma mark - User actions
@@ -68,49 +73,31 @@
 - (void)actionLogin
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 {
-	NSString *email = [fieldEmail.text lowercaseString];
-	NSString *password = fieldPassword.text;
-	//---------------------------------------------------------------------------------------------------------------------------------------------
-	if ([email length] == 0)	{ [ProgressHUD showError:@"Email must be set."]; return; }
-	if ([password length] == 0)	{ [ProgressHUD showError:@"Password must be set."]; return; }
-	//---------------------------------------------------------------------------------------------------------------------------------------------
-	[ProgressHUD show:@"Signing in..." Interaction:NO];
-//	[PFUser logInWithUsernameInBackground:email password:password block:^(PFUser *user, NSError *error)
-//	{
-//		if (user != nil)
-//		{
-//			ParsePushUserAssign();
-//			[ProgressHUD showSuccess:[NSString stringWithFormat:@"Welcome back %@!", user[PF_USER_FULLNAME]]];
-//			[self dismissViewControllerAnimated:YES completion:nil];
-//		}
-//		else [ProgressHUD showError:error.userInfo[@"error"]];
-//	}];
+    [[[self appDelegate] xmppStream] addDelegate:self delegateQueue:dispatch_get_main_queue()];
+
+    [[self appDelegate] connect:_fieldEmail.text];
+
+    [[NSUserDefaults standardUserDefaults] setObject:_fieldEmail.text forKey:@"user"];
+
+    [ProgressHUD show:@"Signing in..." Interaction:NO];
 }
 
 #pragma mark - Table view data source
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//-------------------------------------------------------------------------------------------------------------------------------------------------
-{
-	return 1;
-}
-
-//-------------------------------------------------------------------------------------------------------------------------------------------------
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 {
-	return 3;
+    return 2;
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 {
-	if (indexPath.row == 0) return cellEmail;
-	if (indexPath.row == 1) return cellPassword;
-	if (indexPath.row == 2) return cellButton;
-	return nil;
+    if (indexPath.row == 0) return _cellEmail;
+    if (indexPath.row == 1) return _cellButton;
+    return nil;
 }
 
 #pragma mark - Table view delegate
@@ -119,9 +106,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 {
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-	//---------------------------------------------------------------------------------------------------------------------------------------------
-	if (indexPath.row == 2) [self actionLogin];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //---------------------------------------------------------------------------------------------------------------------------------------------
+    if (indexPath.row == 1) [self actionLogin];
 }
 
 #pragma mark - UITextField delegate
@@ -130,15 +117,19 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 {
-	if (textField == fieldEmail)
-	{
-		[fieldPassword becomeFirstResponder];
-	}
-	if (textField == fieldPassword)
-	{
-		[self actionLogin];
-	}
-	return YES;
+    [self actionLogin];
+    return YES;
 }
+
+- (void)xmppStreamDidAuthenticate:(XMPPStream *)sender {
+    [ProgressHUD dismiss];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[[self appDelegate] xmppStream] removeDelegate:self];
+}
+
 
 @end

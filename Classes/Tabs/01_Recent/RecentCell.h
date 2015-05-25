@@ -9,10 +9,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+@class XMPPMessageArchiving_Contact_CoreDataObject;
+
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 @interface RecentCell : UITableViewCell
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 //- (void)bindData:(PFObject *)recent_;
 
+- (void)bindData:(XMPPMessageArchiving_Contact_CoreDataObject *)recent_;
 @end

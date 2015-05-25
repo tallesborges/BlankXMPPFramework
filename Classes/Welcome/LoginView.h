@@ -10,9 +10,10 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
+#import "XMPPStream.h"
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
-@interface LoginView : UITableViewController <UITextFieldDelegate>
+@interface LoginView : UITableViewController <UITextFieldDelegate,XMPPStreamDelegate>
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 @end
