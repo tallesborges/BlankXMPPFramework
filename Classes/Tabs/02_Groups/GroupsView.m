@@ -21,6 +21,8 @@
 #import "CreateGroupView.h"
 #import "ChatView.h"
 #import "NavigationController.h"
+#import "MucChatView.h"
+#import "XMPPJID.h"
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 @interface GroupsView()
@@ -77,20 +79,7 @@
 - (void)loadGroups
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 {
-//	PFUser *user = [PFUser currentUser];
-//
-//	PFQuery *query = [PFQuery queryWithClassName:PF_GROUP_CLASS_NAME];
-//	[query whereKey:PF_GROUP_MEMBERS equalTo:user.objectId];
-//	[query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-//	{
-//		if (error == nil)
-//		{
-//			[groups removeAllObjects];
-//			[groups addObjectsFromArray:objects];
-//			[self.tableView reloadData];
-//		}
-//		else [ProgressHUD showError:@"Network error."];
-//	}];
+
 }
 
 #pragma mark - User actions
@@ -99,9 +88,17 @@
 - (void)actionNew
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 {
-	CreateGroupView *createGroupView = [[CreateGroupView alloc] init];
-	NavigationController *navController = [[NavigationController alloc] initWithRootViewController:createGroupView];
-	[self presentViewController:navController animated:YES completion:nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Informe o numero que deseja adicionar" delegate:self cancelButtonTitle:@"Cancelar" otherButtonTitles:@"Adicionar", nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alertView show];
+}
+
+#pragma mark - UIAlertDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        [groups addObject:[alertView textFieldAtIndex:0].text];
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - Table view data source
@@ -124,38 +121,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 {
-//	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-//	if (cell == nil) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-//
-//	PFObject *group = groups[indexPath.row];
-//	cell.textLabel.text = group[PF_GROUP_NAME];
-//
-//	cell.detailTextLabel.text = [NSString stringWithFormat:@"%d members", (int) [group[PF_GROUP_MEMBERS] count]];
-//	cell.detailTextLabel.textColor = [UIColor lightGrayColor];
-//
-	return nil;
-}
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+	if (cell == nil) cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
 
-//-------------------------------------------------------------------------------------------------------------------------------------------------
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-//-------------------------------------------------------------------------------------------------------------------------------------------------
-{
-	return YES;
-}
-
-//-------------------------------------------------------------------------------------------------------------------------------------------------
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-//-------------------------------------------------------------------------------------------------------------------------------------------------
-{
-//	PFObject *group = groups[indexPath.row];
-//	[groups removeObject:group];
-//	//---------------------------------------------------------------------------------------------------------------------------------------------
-//	[group deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error)
-//	{
-//		if (error != nil) [ProgressHUD showError:@"Network error."];
-//	}];
-//	//---------------------------------------------------------------------------------------------------------------------------------------------
-//	[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    NSString *groupID = groups[indexPath.row];
+	cell.textLabel.text = groupID;
+//
+	return cell;
 }
 
 #pragma mark - Table view delegate
@@ -164,16 +136,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 {
-//	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-//	//---------------------------------------------------------------------------------------------------------------------------------------------
-//	PFObject *group = groups[indexPath.row];
-//	NSString *groupId = group.objectId;
-//	//---------------------------------------------------------------------------------------------------------------------------------------------
-//	CreateRecentItem([PFUser currentUser], groupId, group[PF_GROUP_NAME]);
-//	//---------------------------------------------------------------------------------------------------------------------------------------------
-//	ChatView *chatView = [[ChatView alloc] initWith:groupId];
-//	chatView.hidesBottomBarWhenPushed = YES;
-//	[self.navigationController pushViewController:chatView animated:YES];
+    NSString *groupID = groups[indexPath.row];
+
+    MucChatView *chatView = [[MucChatView alloc] initWithUserJID:[XMPPJID jidWithUser:groupID domain:@"conference.localhost" resource:nil]];
+    chatView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:chatView animated:YES];
 }
 
 @end

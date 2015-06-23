@@ -46,30 +46,11 @@
     [super viewDidLoad];
     self.title = @"Recent";
     //---------------------------------------------------------------------------------------------------------------------------------------------
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self
-                                                                                           action:@selector(actionCompose)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self
+//                                                                                           action:@selector(actionCompose)];
     //---------------------------------------------------------------------------------------------------------------------------------------------
     [self.tableView registerNib:[UINib nibWithNibName:@"RecentCell" bundle:nil] forCellReuseIdentifier:@"RecentCell"];
     //---------------------------------------------------------------------------------------------------------------------------------------------
-
-    XMPPMessageArchivingCoreDataStorage *storage = [XMPPMessageArchivingCoreDataStorage sharedInstance];
-    NSManagedObjectContext *moc = [storage mainThreadManagedObjectContext];
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"XMPPMessageArchiving_Contact_CoreDataObject"
-                                                         inManagedObjectContext:moc];
-    NSFetchRequest *request = [[NSFetchRequest alloc]init];
-    [request setEntity:entityDescription];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"streamBareJidStr == %@",[XMPPSample currentUser].bare]];
-
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"mostRecentMessageTimestamp" ascending:NO];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    [request setSortDescriptors:sortDescriptors];
-
-    _contactsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:moc sectionNameKeyPath:nil cacheName:nil];
-    _contactsController.delegate = self;
-
-
-    NSError *error;
-    BOOL rval = [_contactsController performFetch:&error];
 
 }
 
@@ -77,6 +58,29 @@
 - (void)viewDidAppear:(BOOL)animated
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"configured"]) {
+        XMPPMessageArchivingCoreDataStorage *storage = [XMPPMessageArchivingCoreDataStorage sharedInstance];
+        NSManagedObjectContext *moc = [storage mainThreadManagedObjectContext];
+        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"XMPPMessageArchiving_Contact_CoreDataObject"
+                                                             inManagedObjectContext:moc];
+        NSFetchRequest *request = [[NSFetchRequest alloc]init];
+        [request setEntity:entityDescription];
+        [request setPredicate:[NSPredicate predicateWithFormat:@"streamBareJidStr == %@",[XMPPSample currentUser].bare]];
+
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"mostRecentMessageTimestamp" ascending:NO];
+        NSArray *sortDescriptors = @[sortDescriptor];
+        [request setSortDescriptors:sortDescriptors];
+
+        _contactsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:moc sectionNameKeyPath:nil cacheName:nil];
+        _contactsController.delegate = self;
+
+
+        NSError *error;
+        BOOL rval = [_contactsController performFetch:&error];
+        [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"configured"];
+        [self.tableView reloadData];
+    }
+
     [super viewDidAppear:animated];
     //---------------------------------------------------------------------------------------------------------------------------------------------
 

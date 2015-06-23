@@ -9,6 +9,7 @@
 #import "JSQMessages.h"
 #import "XMPPSample.h"
 #import "XMPPJID.h"
+#import "SelectSingleView.h"
 
 
 @implementation MucChatView {
@@ -39,6 +40,9 @@
     self.senderId = [XMPPSample currentUser].bare;
     self.senderDisplayName = [XMPPSample currentUser].bare;
 
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self
+                                                                                           action:@selector(actionUsers)];
+
     JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
 
     _outgoingBubbleImageData = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleBlueColor]];
@@ -48,6 +52,7 @@
 
     XMPPRoomCoreDataStorage *xmppRoomCoreDataStorage = [XMPPRoomCoreDataStorage sharedInstance];
     _xmppRoom = [[XMPPRoom alloc] initWithRoomStorage:xmppRoomCoreDataStorage jid:_roomJID];
+    [_xmppRoom addDelegate:self delegateQueue:dispatch_get_main_queue()];
     [_xmppRoom activate:[XMPPSample currentXMPPStream]];
 
     [_xmppRoom joinRoomUsingNickname:[XMPPSample currentUser].bare history:nil];
@@ -70,20 +75,25 @@
     [_messagesController performFetch:nil];
 }
 
-#pragma mark - JSQMessageViewControllerDelegate
+- (void)actionUsers {
+    SelectSingleView *vc = [SelectSingleView new];
+    vc.delegate = self;
 
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+#pragma mark - Select Single Delegate
+- (void)didSelectSingleUser:(NSString *)user {
+    [_xmppRoom inviteUser:[XMPPJID jidWithUser:user domain:@"localhost" resource:nil] withMessage:@"group chat"];
+}
+
+#pragma mark - JSQMessageViewControllerDelegate
 - (void)didPressSendButton:(UIButton *)button withMessageText:(NSString *)text senderId:(NSString *)senderId senderDisplayName:(NSString *)senderDisplayName date:(NSDate *)date {
 
     [_xmppRoom sendMessageWithBody:text];
 
     [self finishSendingMessageAnimated:YES];
 }
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [_xmppRoom deactivate];
-}
-
 
 #pragma mark - JSQMessageViewController DataSource
 - (id <JSQMessageData>)collectionView:(JSQMessagesCollectionView *)collectionView messageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -101,6 +111,16 @@
     JSQMessage *jsqMessage = [JSQMessage messageWithSenderId:sender displayName:sender text:message_coreDataObject.message.body];
 
     return jsqMessage;
+}
+
+#pragma mark - Room Delegate
+
+- (void)xmppRoomDidJoin:(XMPPRoom *)sender {
+    [sender fetchConfigurationForm];
+}
+
+- (void)xmppRoom:(XMPPRoom *)sender didFetchConfigurationForm:(NSXMLElement *)configForm {
+    [sender configureRoomUsingOptions:nil];
 }
 
 
@@ -129,5 +149,10 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self finishReceivingMessageAnimated:YES];
 }
+
+- (void)dealloc {
+    [_xmppRoom deactivate];
+}
+
 
 @end

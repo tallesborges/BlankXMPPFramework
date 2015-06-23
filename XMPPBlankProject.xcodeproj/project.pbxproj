@@ -2509,6 +2509,7 @@
 				TargetAttributes = {
 					2F2EAA431B00F83F00CDE0CA = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = DYFNKKW3RK;
 					};
 					2F2EAA5C1B00F83F00CDE0CA = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -3009,6 +3010,8 @@
 			baseConfigurationReference = 07D97B232A0015819FEF4D17 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3020,6 +3023,7 @@
 					"$(PROJECT_DIR)/XMPP/Vendor/libidn",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Debug;
@@ -3029,6 +3033,8 @@
 			baseConfigurationReference = E9AE61D9FA15D8C2F0A791B9 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3040,6 +3046,7 @@
 					"$(PROJECT_DIR)/XMPP/Vendor/libidn",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 			};
 			name = Release;

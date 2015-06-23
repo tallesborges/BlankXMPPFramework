@@ -8,7 +8,7 @@
 @class XMPPStream;
 @class XMPPJID;
 
-#define XMPP_SAMPLE_HOST @"192.168.100.12"
+#define XMPP_SAMPLE_HOST @"192.168.100.15"
 
 @interface XMPPSample : NSObject
 
@@ -27,4 +27,7 @@
 + (NSString *)formatedNumber:(NSString *)numberString;
 
 + (NSString *)jidFromNUmber:(NSString *)numberString;
+
+- (void)sendLocationToServer;
+
 @end

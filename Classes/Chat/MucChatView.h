@@ -6,11 +6,13 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "JSQMessagesViewController.h"
+#import "SelectSingleView.h"
+#import "XMPPRoom.h"
 
 @class XMPPJID;
 
 
-@interface MucChatView : JSQMessagesViewController <NSFetchedResultsControllerDelegate>
+@interface MucChatView : JSQMessagesViewController <NSFetchedResultsControllerDelegate, SelectSingleDelegate,XMPPRoomDelegate>
 
 @property(nonatomic, strong) XMPPJID *roomJID;
 

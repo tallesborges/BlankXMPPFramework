@@ -237,6 +237,7 @@
 }
 
 - (void)goOnline {
+    [[NSUserDefaults standardUserDefaults] setBool:false forKey:@"configured"];
     XMPPPresence *presence = [XMPPPresence presence]; // type="available" is implicit
 
     NSString *domain = [_xmppStream.myJID domain];
@@ -277,7 +278,8 @@
 
 #pragma mark - XMPPMUC
 - (void)xmppMUC:(XMPPMUC *)sender roomJID:(XMPPJID *)roomJID didReceiveInvitation:(XMPPMessage *)message {
-
+    [message addBody:@"Voce entrou no grupo"];
+    [_xmppMessageArchivingStorage archiveMessage:message outgoing:NO xmppStream:[XMPPSample currentXMPPStream]];
 }
 
 

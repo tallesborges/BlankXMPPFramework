@@ -70,6 +70,13 @@
     [self loadUser];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [[XMPPSample instance] sendLocationToServer];
+}
+
+
 #pragma mark - Backend actions
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
